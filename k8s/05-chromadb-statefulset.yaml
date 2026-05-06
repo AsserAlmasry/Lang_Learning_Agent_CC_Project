@@ -1,0 +1,84 @@
+# ==============================================================================
+# ChromaDB - StatefulSet + Headless Service
+# ==============================================================================
+# StatefulSet ensures stable pod identity and persistent storage
+# ==============================================================================
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: chroma-db
+  namespace: lang-agent
+  labels:
+    app.kubernetes.io/name: lang-agent
+    app.kubernetes.io/component: chroma-db
+spec:
+  serviceName: chroma-db
+  replicas: 1
+  selector:
+    matchLabels:
+      app: chroma-db
+  template:
+    metadata:
+      labels:
+        app: chroma-db
+        app.kubernetes.io/name: lang-agent
+        app.kubernetes.io/component: chroma-db
+    spec:
+      containers:
+        - name: chroma-db
+          image: chromadb/chroma:latest
+          ports:
+            - containerPort: 8000
+              name: http
+          resources:
+            requests:
+              cpu: "500m"
+              memory: "1024Mi"
+            limits:
+              cpu: "2000m"
+              memory: "5120Mi"
+          readinessProbe:
+            httpGet:
+              path: /api/v1/heartbeat
+              port: 8000
+            initialDelaySeconds: 15
+            periodSeconds: 10
+          livenessProbe:
+            httpGet:
+              path: /api/v1/heartbeat
+              port: 8000
+            initialDelaySeconds: 30
+            periodSeconds: 30
+          volumeMounts:
+            - name: chroma-data
+              mountPath: /chroma/chroma
+  volumeClaimTemplates:
+    - metadata:
+        name: chroma-data
+      spec:
+        accessModes: ["ReadWriteOnce"]
+        resources:
+          requests:
+            storage: 5Gi
+---
+# ==============================================================================
+# ChromaDB - Headless Service (for StatefulSet DNS)
+# ==============================================================================
+apiVersion: v1
+kind: Service
+metadata:
+  name: chroma-db
+  namespace: lang-agent
+  labels:
+    app.kubernetes.io/name: lang-agent
+    app.kubernetes.io/component: chroma-db
+spec:
+  type: ClusterIP
+  clusterIP: None
+  selector:
+    app: chroma-db
+  ports:
+    - name: http
+      port: 8000
+      targetPort: 8000
+      protocol: TCP

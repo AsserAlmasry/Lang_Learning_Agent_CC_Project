@@ -1,0 +1,10 @@
+# ==============================================================================
+# Namespace - Isolates all Language Learning Agent resources
+# ==============================================================================
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: lang-agent
+  labels:
+    app.kubernetes.io/name: lang-agent
+    app.kubernetes.io/part-of: language-learning-agent

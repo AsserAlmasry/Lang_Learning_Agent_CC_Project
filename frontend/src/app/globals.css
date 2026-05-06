@@ -1,0 +1,90 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+.main-gradient {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+.action-btn {
+  background: linear-gradient(90deg, #f093fb 0%, #f5576c 100%);
+  color: white;
+  border-radius: 12px;
+  padding: 12px 28px;
+  border: none;
+  box-shadow: 0 4px 15px rgba(245, 87, 108, 0.4);
+  font-weight: 600;
+  transition: all 0.3s ease;
+  width: 100%;
+  cursor: pointer;
+  margin-bottom: 12px;
+}
+.action-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(245, 87, 108, 0.6);
+}
+
+.chat-message {
+  padding: 1.5rem;
+  border-radius: 15px;
+  margin-bottom: 1.5rem;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  animation: fadeIn 0.5s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.user-message {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  margin-left: 10%;
+}
+
+.bot-message {
+  background: white;
+  color: #333;
+  border-left: 4px solid #f5576c;
+  margin-right: 10%;
+}
+
+.tool-badge {
+  display: inline-block;
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-size: 14px;
+  margin: 5px;
+  font-weight: 600;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+  transition: all 0.3s ease;
+  background-color: white;
+  color: #333;
+}
+.tool-badge:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
+
+.chat-input-container {
+    border-radius: 10px;
+    border: 2px solid #e0e0e0;
+    padding: 12px;
+    font-size: 16px;
+    width: 100%;
+    outline: none;
+}
+.chat-input-container:focus {
+    border-color: #f5576c;
+    box-shadow: 0 0 0 0.2rem rgba(245, 87, 108, 0.25);
+}

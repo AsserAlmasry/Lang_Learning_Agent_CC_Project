@@ -1,0 +1,41 @@
+# ============================================================
+# Language Learning Agent - Root .gitignore
+# ============================================================
+
+# === SECRETS (CRITICAL) ===
+.env
+.env.*
+*.pem
+*.key
+
+# === Python ===
+__pycache__/
+*.pyc
+*.pyo
+.venv/
+venv/
+*.egg-info/
+
+# === Node / Frontend ===
+node_modules/
+frontend/.next/
+frontend/out/
+
+# === IDE ===
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# === OS ===
+.DS_Store
+Thumbs.db
+
+# === Build / Docker ===
+*.log
+ocr_init.log
+hcloud.exe
+
+# === Data (large files) ===
+data/chroma_db/
+scratch/

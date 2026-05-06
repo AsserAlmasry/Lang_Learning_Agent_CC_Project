@@ -1,0 +1,165 @@
+[
+    {
+        "topic": "Present Simple",
+        "content": "Present simple describes habits, routines, facts. Form: Subject + base verb (+s for 3rd person). Use: daily routines (I work every day), facts (Water boils at 100\u00b0C), scheduled events (Train leaves at 6pm). Examples: She speaks French. They live in Cairo. He doesn't like coffee.",
+        "category": "tenses",
+        "difficulty": "beginner"
+    },
+    {
+        "topic": "Present Continuous",
+        "content": "Present continuous describes current actions or temporary situations. Form: am/is/are + verb-ing. Use: now actions (I'm studying), temporary (She's staying here), future plans (We're meeting tomorrow). Examples: I'm reading. They're watching TV. She isn't working today.",
+        "category": "tenses",
+        "difficulty": "beginner"
+    },
+    {
+        "topic": "Present Perfect",
+        "content": "Present perfect connects past to present. Form: have/has + past participle. Use: experiences (I've visited Japan), unfinished time (Read 3 books this month), recent with results (She's lost keys). Time: ever, never, just, already, yet, since, for. Examples: Have you been abroad? I've just finished. They haven't arrived.",
+        "category": "tenses",
+        "difficulty": "intermediate"
+    },
+    {
+        "topic": "Past Simple",
+        "content": "Past simple for completed past actions. Form: verb-ed or irregular. Use: finished actions (Graduated 2020), past habits (Visited every Sunday), sequences (Woke, ate, left). Time: yesterday, last week, ago, in 1999. Examples: I studied hard. Did you see him? They didn't come.",
+        "category": "tenses",
+        "difficulty": "beginner"
+    },
+    {
+        "topic": "Past Continuous",
+        "content": "Past continuous describes ongoing past actions. Form: was/were + verb-ing. Use: interrupted actions (I was cooking when he called), simultaneous actions (He was reading while she was writing). Examples: I was studying. They were playing football. She wasn't listening.",
+        "category": "tenses",
+        "difficulty": "intermediate"
+    },
+    {
+        "topic": "Past Perfect",
+        "content": "Past perfect shows completed action before another past action. Form: had + past participle. Use: sequence of past events (Had finished before he arrived), past result (Wish about past). Time: already, just, never, before, after. Examples: I had eaten. Had you seen it? She hadn't arrived.",
+        "category": "tenses",
+        "difficulty": "intermediate"
+    },
+    {
+        "topic": "Past Perfect Continuous",
+        "content": "Past perfect continuous shows duration before past event. Form: had been + verb-ing. Use: length of time before past event (Had been working for 3 hours when...). Examples: I had been waiting. How long had you been studying? She hadn't been feeling well.",
+        "category": "tenses",
+        "difficulty": "advanced"
+    },
+    {
+        "topic": "Future Will",
+        "content": "Will for predictions, spontaneous decisions, promises. Form: will + base verb. Use: predictions (It'll rain), instant decisions (I'll answer phone), promises (I'll help). Examples: She'll love this. I think he'll win. Will you come?",
+        "category": "tenses",
+        "difficulty": "beginner"
+    },
+    {
+        "topic": "Future Going To",
+        "content": "Going to for plans and evidence-based predictions. Form: am/is/are going to + verb. Use: intentions (I'm going to study medicine), predictions (It's going to rain - dark clouds). Examples: We're going to buy a house. She's going to be doctor.",
+        "category": "tenses",
+        "difficulty": "beginner"
+    },
+    {
+        "topic": "Future Continuous",
+        "content": "Future continuous for ongoing future actions. Form: will be + verb-ing. Use: actions in progress at specific future time (Will be studying at 8pm). Examples: I'll be working. Will you be coming? They won't be staying long.",
+        "category": "tenses",
+        "difficulty": "intermediate"
+    },
+    {
+        "topic": "Future Perfect",
+        "content": "Future perfect for completed actions by future time. Form: will have + past participle. Use: actions completed before future time (Will have finished by 5pm). Examples: I'll have eaten. Will you have completed it? They won't have arrived.",
+        "category": "tenses",
+        "difficulty": "advanced"
+    },
+    {
+        "topic": "Future Perfect Continuous",
+        "content": "Future perfect continuous for duration by future time. Form: will have been + verb-ing. Use: duration up to future point (Will have been working for 2 hours by...). Examples: I'll have been living here for 5 years. How long will you have been studying?",
+        "category": "tenses",
+        "difficulty": "advanced"
+    },
+    {
+        "topic": "Zero Conditional",
+        "content": "Zero conditional for scientific facts. Form: if + present, present. Use: universal truths (If you heat water to 100\u00b0C, it boils). Examples: If you eat too much, you get sick. If it rains, the ground gets wet.",
+        "category": "conditionals",
+        "difficulty": "intermediate"
+    },
+    {
+        "topic": "First Conditional",
+        "content": "First conditional for real future possibilities. Form: If + present, will + verb. Use: likely situations (If it rains, I'll stay home), warnings (If you don't study, you'll fail). Examples: If I see John, I'll tell him. Unless you hurry, we'll be late.",
+        "category": "conditionals",
+        "difficulty": "intermediate"
+    },
+    {
+        "topic": "Second Conditional",
+        "content": "Second conditional for hypothetical present/future. Form: If + past, would + verb. Use: unreal present (If I had money, I'd travel), unlikely future, advice (If I were you, I'd apologize). Examples: If I were rich, I'd help people. What would you do?",
+        "category": "conditionals",
+        "difficulty": "intermediate"
+    },
+    {
+        "topic": "Third Conditional",
+        "content": "Third conditional for hypothetical past. Form: If + past perfect, would have + past participle. Use: regrets (If I'd studied, I'd have passed), imagining different past. Examples: If I'd known, I'd have come. She wouldn't have been angry if you'd called.",
+        "category": "conditionals",
+        "difficulty": "advanced"
+    },
+    {
+        "topic": "Mixed Conditionals",
+        "content": "Mixed conditionals mix time periods. Past condition + present result: If I had studied, I would know. Present condition + past result: If I were rich, I would have bought that car. Examples: If I had practiced more, I would play better now.",
+        "category": "conditionals",
+        "difficulty": "advanced"
+    },
+    {
+        "topic": "Modal Conditionals",
+        "content": "Conditionals with modals: If + past, could/might/should + verb. Use: possibilities (If I had time, I could help), suggestions (If I were you, I might reconsider). Examples: If I were there, I could help. If I had known, I might have come.",
+        "category": "conditionals",
+        "difficulty": "advanced"
+    },
+    {
+        "topic": "Modal Can/Could",
+        "content": "Can/Could for ability, permission, possibility. CAN: present ability (I can swim), permission (Can I leave?). COULD: past ability (I could run fast), polite requests (Could you help?), possibility (Could rain). Examples: Can you drive? Could I borrow pen?",
+        "category": "modals",
+        "difficulty": "beginner"
+    },
+    {
+        "topic": "Modal May/Might",
+        "content": "May/Might for permission, possibility. MAY: formal permission (May I leave?), stronger possibility (It may rain). MIGHT: weaker possibility (It might rain), past of may. Examples: May I help you? It might be true. You might be right.",
+        "category": "modals",
+        "difficulty": "intermediate"
+    },
+    {
+        "topic": "Modal Must/Have To",
+        "content": "Must/Have to for obligation. MUST: strong obligation (Must wear seatbelt), deduction (Must be tired). HAVE TO: external obligation (Have to work tomorrow). MUSTN'T: prohibition (Mustn't smoke). DON'T HAVE TO: no obligation. Examples: I must finish today. Do you have to wear uniform?",
+        "category": "modals",
+        "difficulty": "intermediate"
+    },
+    {
+        "topic": "Modal Should",
+        "content": "Should for advice, recommendations, expectations. Form: should + base verb. Use: advice (Should see doctor), moral obligation (Should help others), expectation (Should be here now). Examples: You should rest. I should've studied. Shouldn't we leave?",
+        "category": "modals",
+        "difficulty": "beginner"
+    },
+    {
+        "topic": "Modal Ought To",
+        "content": "Ought to for moral obligation, advice. Form: ought to + base verb. Similar to should but stronger. Negative: ought not to. Examples: You ought to apologize. He ought not to drive after drinking. Ought we to tell him?",
+        "category": "modals",
+        "difficulty": "intermediate"
+    },
+    {
+        "topic": "Modal Need To",
+        "content": "Need to for necessity. Form: need to + base verb. Less formal than must. Examples: I need to study. Do you need to go? You don't need to worry. Needn't (negative formal): You needn't come if busy.",
+        "category": "modals",
+        "difficulty": "intermediate"
+    },
+    {
+        "topic": "Adjectives: Comparative",
+        "content": "Comparative adjectives compare two things. Short words: add -er (fast -> faster). Long words: use 'more' (beautiful -> more beautiful). Irregular: good -> better, bad -> worse, far -> farther/further. Form: [Noun] is [Comparative] than [Noun]. Examples: She is taller than me. This book is more interesting.",
+        "category": "grammar",
+        "difficulty": "beginner"
+    },
+    {
+        "topic": "Adjectives: Superlative",
+        "content": "Superlative adjectives compare three or more things. Short words: add -est (fast -> fastest). Long words: use 'the most' (beautiful -> the most beautiful). Irregular: good -> the best, bad -> the worst. Form: [Noun] is the [Superlative]. Examples: He is the tallest in class. This is the most expensive car.",
+        "category": "grammar",
+        "difficulty": "beginner"
+    },
+    {
+        "topic": "Order of Adjectives",
+        "content": "When using multiple adjectives, use this order: Opinion, Size, Age, Shape, Color, Origin, Material, Purpose. Examples: A beautiful (opinion) large (size) old (age) round (shape) brown (color) Italian (origin) leather (material) travel (purpose) bag. Usually, we use max 3 adjectives.",
+        "category": "grammar",
+        "difficulty": "intermediate"
+    }
+
+]

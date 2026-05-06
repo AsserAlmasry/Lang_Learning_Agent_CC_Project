@@ -1,0 +1,40 @@
+# Secrets (CRITICAL - never bake into images)
+.env
+.env.*
+
+# Dependencies
+node_modules
+__pycache__
+*.pyc
+.venv
+venv
+
+# Build artifacts
+.next
+.git
+.gitignore
+
+# IDE
+.vscode
+.idea
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+ocr_init.log
+
+# Test files
+test_*.py
+smoke_test.py
+verify_*.py
+scratch/
+
+# Streamlit (not needed in containers)
+main.py
+
+# Docker files (avoid recursive copy)
+Dockerfile.*
+docker-compose*.yml

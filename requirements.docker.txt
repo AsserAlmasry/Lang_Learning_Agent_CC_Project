@@ -1,0 +1,40 @@
+# PyTorch CPU-only (much smaller, no CUDA needed in Docker)
+--extra-index-url https://download.pytorch.org/whl/cpu
+
+# Core AI Dependencies
+numpy==1.26.4
+pandas==2.0.3
+openai
+groq
+langchain
+langchain_community
+langchain_openai
+langchain_groq
+langchain-huggingface
+sentence-transformers
+chromadb
+
+# OCR & Vision (CPU-only torch for Docker)
+easyocr
+torch
+torchvision
+pillow
+
+# API & Web
+fastapi
+uvicorn[standard]
+python-multipart
+python-dotenv
+prometheus-fastapi-instrumentator
+
+# Text-to-Speech
+gTTS
+
+# Email
+# (no extra deps, uses stdlib smtplib)
+
+# Utilities
+beautifulsoup4
+requests
+lxml
+pysbd

@@ -1,0 +1,33 @@
+# ==============================================================================
+# Persistent Volume & PVC - ChromaDB data persistence
+# ==============================================================================
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: chroma-pv
+  labels:
+    app.kubernetes.io/name: lang-agent
+    app.kubernetes.io/component: database
+spec:
+  capacity:
+    storage: 5Gi
+  accessModes:
+    - ReadWriteOnce
+  persistentVolumeReclaimPolicy: Retain
+  hostPath:
+    path: /data/chroma-db
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: chroma-pvc
+  namespace: lang-agent
+  labels:
+    app.kubernetes.io/name: lang-agent
+    app.kubernetes.io/component: database
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 5Gi
