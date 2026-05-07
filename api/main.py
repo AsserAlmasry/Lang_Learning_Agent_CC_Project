@@ -222,7 +222,11 @@ async def speech_to_text(file: UploadFile = File(...), _key: str = Depends(verif
     """Transcribes audio using Groq's Whisper model."""
     try:
         # Save uploaded file to a temporary file
-        with tempfile.NamedTemporaryFile(delete=False, suffix=".wav") as tmp:
+        ext = os.path.splitext(file.filename)[1]
+        if not ext:
+            ext = ".webm"
+            
+        with tempfile.NamedTemporaryFile(delete=False, suffix=ext) as tmp:
             tmp.write(await file.read())
             tmp_path = tmp.name
 

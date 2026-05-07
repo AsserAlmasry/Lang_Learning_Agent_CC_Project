@@ -188,9 +188,9 @@ export default function Home() {
       };
 
       mediaRecorder.onstop = async () => {
-        const audioBlob = new Blob(audioChunksRef.current, { type: 'audio/wav' });
+        const audioBlob = new Blob(audioChunksRef.current, { type: 'audio/webm' });
         const formData = new FormData();
-        formData.append('file', audioBlob, 'recording.wav');
+        formData.append('file', audioBlob, 'recording.webm');
 
         try {
           const response = await fetch(`${API_URL}/api/stt`, {
