@@ -39,6 +39,9 @@ export default function Home() {
   const fileInputRef = useRef<HTMLInputElement>(null);
   const mediaRecorderRef = useRef<MediaRecorder | null>(null);
   const audioChunksRef = useRef<Blob[]>([]);
+  const maxVolumeRef = useRef<number>(0);
+  const audioContextRef = useRef<AudioContext | null>(null);
+  const animationFrameRef = useRef<number>(0);
 
 
   const scenarios = {
@@ -184,6 +187,26 @@ export default function Home() {
         } 
       });
       
+      // Silence Detection setup
+      maxVolumeRef.current = 0;
+      const audioContext = new (window.AudioContext || (window as any).webkitAudioContext)();
+      audioContextRef.current = audioContext;
+      const analyser = audioContext.createAnalyser();
+      analyser.fftSize = 256;
+      const source = audioContext.createMediaStreamSource(stream);
+      source.connect(analyser);
+      const dataArray = new Uint8Array(analyser.frequencyBinCount);
+
+      const checkVolume = () => {
+        analyser.getByteFrequencyData(dataArray);
+        let sum = 0;
+        for (let i = 0; i < dataArray.length; i++) sum += dataArray[i];
+        const average = sum / dataArray.length;
+        if (average > maxVolumeRef.current) maxVolumeRef.current = average;
+        animationFrameRef.current = requestAnimationFrame(checkVolume);
+      };
+      checkVolume();
+
       // Attempt to use a widely supported mime type, fallback to browser default
       let options = {};
       if (MediaRecorder.isTypeSupported('audio/webm')) {
@@ -203,6 +226,18 @@ export default function Home() {
       };
 
       mediaRecorder.onstop = async () => {
+        // Cleanup silence detector
+        cancelAnimationFrame(animationFrameRef.current);
+        if (audioContextRef.current && audioContextRef.current.state !== 'closed') {
+          audioContextRef.current.close();
+        }
+
+        if (maxVolumeRef.current < 2) {
+          alert("No audio detected! Your Windows microphone is muted or the wrong device is selected.");
+          stream.getTracks().forEach(track => track.stop());
+          return;
+        }
+
         const actualMimeType = mediaRecorderRef.current?.mimeType || 'audio/webm';
         const audioBlob = new Blob(audioChunksRef.current, { type: actualMimeType });
         
