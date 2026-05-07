@@ -253,11 +253,6 @@ async def speech_to_text(file: UploadFile = File(...), _key: str = Depends(verif
         text = transcription.text.strip()
         print(f"STT DEBUG: Raw Whisper transcription: '{text}'")
         
-        # Filter out common Whisper hallucinations for silence/noise
-        hallucinations = ["you", "you.", "you you", "you you.", "thank you.", "thank you", "thanks.", "thanks", "[silence]", "[ silence ]", ""]
-        if text.lower() in hallucinations:
-            text = ""
-        
         return {"text": text}
     except Exception as e:
         print(f"STT Error: {str(e)}")
