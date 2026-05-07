@@ -12,9 +12,12 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     libglib2.0-0 \
     && rm -rf /var/lib/apt/lists/*
 
+RUN python -m venv /opt/venv
+ENV PATH="/opt/venv/bin:$PATH"
+
 COPY requirements.docker.txt ./requirements.txt
 RUN pip install --upgrade pip && \
-    pip install --no-cache-dir --prefix=/install --timeout=300 --retries=5 -r requirements.txt
+    pip install --no-cache-dir --timeout=300 --retries=5 -r requirements.txt
 
 # ============================================================
 # Stage 2: Runtime - Minimal image with only runtime deps
@@ -29,8 +32,9 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     libglib2.0-0 \
     && rm -rf /var/lib/apt/lists/*
 
-# Copy installed Python packages from builder
-COPY --from=builder /install /usr/local
+# Copy virtual environment from builder
+COPY --from=builder /opt/venv /opt/venv
+ENV PATH="/opt/venv/bin:$PATH"
 
 # Copy application code
 COPY core/ ./core/
