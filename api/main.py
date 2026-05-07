@@ -186,7 +186,8 @@ async def email_quiz(req: EmailQuizRequest, _key: str = Depends(verify_api_key))
 @app.post("/api/email/stats")
 async def email_stats(req: EmailStatsRequest, _key: str = Depends(verify_api_key)):
     if req.session_id not in sessions:
-        raise HTTPException(status_code=404, detail="Session not found")
+        sessions[req.session_id] = EnhancedLanguageLearningAgent()
+        start_times[req.session_id] = time.time()
     
     agent = sessions[req.session_id]
     start_time = start_times.get(req.session_id, time.time())
