@@ -244,10 +244,14 @@ async def speech_to_text(file: UploadFile = File(...), _key: str = Depends(verif
                 prompt="Transcribe the following English speech. The speech may be empty or contain background noise. Do not hallucinate."
             )
         
+        file_size = os.path.getsize(tmp_path)
+        print(f"STT DEBUG: Received audio file size: {file_size} bytes, extension: {ext}")
+        
         # Cleanup
         os.unlink(tmp_path)
         
         text = transcription.text.strip()
+        print(f"STT DEBUG: Raw Whisper transcription: '{text}'")
         
         # Filter out common Whisper hallucinations for silence/noise
         hallucinations = ["you", "you.", "you you", "you you.", "thank you.", "thank you", "thanks.", "thanks", "[silence]", "[ silence ]", ""]
