@@ -239,12 +239,22 @@ async def speech_to_text(file: UploadFile = File(...), _key: str = Depends(verif
                 file=(tmp_path, audio_file.read()),
                 model="whisper-large-v3",
                 response_format="json",
+                language="en",
+                temperature=0.0,
+                prompt="Transcribe the following English speech. The speech may be empty or contain background noise. Do not hallucinate."
             )
         
         # Cleanup
         os.unlink(tmp_path)
         
-        return {"text": transcription.text}
+        text = transcription.text.strip()
+        
+        # Filter out common Whisper hallucinations for silence/noise
+        hallucinations = ["you", "you.", "you you", "you you.", "thank you.", "thank you", "thanks.", "thanks", "[silence]", "[ silence ]", ""]
+        if text.lower() in hallucinations:
+            text = ""
+        
+        return {"text": text}
     except Exception as e:
         print(f"STT Error: {str(e)}")
         raise HTTPException(status_code=500, detail="Failed to transcribe audio.")

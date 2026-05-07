@@ -233,7 +233,9 @@ export default function Home() {
         }
       };
 
-      mediaRecorder.start();
+      // Start recording with a 1-second timeslice to ensure WebM duration metadata is generated correctly
+      // This prevents ffmpeg/Whisper from hallucinating due to corrupt container formats
+      mediaRecorder.start(1000);
       setIsListening(true);
     } catch (err) {
       console.error("Microphone Access Error:", err);
