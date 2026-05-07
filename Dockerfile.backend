@@ -32,21 +32,21 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     libglib2.0-0 \
     && rm -rf /var/lib/apt/lists/*
 
-# Copy virtual environment from builder
-COPY --from=builder /opt/venv /opt/venv
-ENV PATH="/opt/venv/bin:$PATH"
-
-# Copy application code
-COPY core/ ./core/
-COPY utils/ ./utils/
-COPY api/ ./api/
-COPY data/ ./data/
-
 # Create a non-root user for security
 RUN groupadd --system appgroup && \
     useradd --system --gid appgroup --create-home appuser && \
     mkdir -p /app/data/chroma_db && \
     chown -R appuser:appgroup /app
+
+# Copy virtual environment from builder
+COPY --chown=appuser:appgroup --from=builder /opt/venv /opt/venv
+ENV PATH="/opt/venv/bin:$PATH"
+
+# Copy application code
+COPY --chown=appuser:appgroup core/ ./core/
+COPY --chown=appuser:appgroup utils/ ./utils/
+COPY --chown=appuser:appgroup api/ ./api/
+COPY --chown=appuser:appgroup data/ ./data/
 
 USER appuser
 
