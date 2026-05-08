@@ -5,6 +5,8 @@
 
 A cloud-deployed, multi-container AI-powered English language tutor built with FastAPI, Next.js, ChromaDB, and LLMs — running on Huawei Cloud ECS with full monitoring and Kubernetes support.
 
+🚀 **Link for the recorded video of the project:** [Graduation Project Module1 Asser](https://drive.google.com/drive/folders/1g05yjX6-QiUEnLybJwR8nR6ngaXW0CNp?usp=sharing)
+
 🌐 **Live Demo:** [https://lang-agent-asser.duckdns.org](https://lang-agent-asser.duckdns.org)  
 📊 **Monitoring:** [https://lang-agent-asser.duckdns.org/stats/](https://lang-agent-asser.duckdns.org/stats/)
 
