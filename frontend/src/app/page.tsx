@@ -34,6 +34,7 @@ export default function Home() {
   const [quizCount, setQuizCount] = useState(5);
   const [isListening, setIsListening] = useState(false);
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+  const [userEmail, setUserEmail] = useState('');
 
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const fileInputRef = useRef<HTMLInputElement>(null);
@@ -271,7 +272,7 @@ export default function Home() {
       await fetch(`${API_URL}/api/email/quiz`, {
         method: 'POST',
         headers: AUTH_HEADERS,
-        body: JSON.stringify({ session_id: sessionId, score, total })
+        body: JSON.stringify({ session_id: sessionId, score, total, user_email: userEmail })
       });
     } catch (e) { console.error(e); }
   };
@@ -282,12 +283,44 @@ export default function Home() {
       const res = await fetch(`${API_URL}/api/email/stats`, {
         method: 'POST',
         headers: AUTH_HEADERS,
-        body: JSON.stringify({ session_id: sessionId })
+        body: JSON.stringify({ session_id: sessionId, user_email: userEmail })
       });
       if (res.ok) alert("Session report sent successfully! 🚀");
     } catch (e) { console.error(e); }
     finally { setIsLoading(false); }
   };
+
+  if (!userEmail) {
+    return (
+      <div className="flex items-center justify-center h-screen bg-gradient-to-r from-[#667eea] to-[#764ba2]">
+        <div className="bg-white p-10 rounded-3xl shadow-2xl max-w-md w-full mx-4 text-center animate-in zoom-in duration-500">
+          <div className="text-6xl mb-6">🎓</div>
+          <h1 className="text-3xl font-extrabold text-gray-800 mb-2">Welcome to AI Tutor</h1>
+          <p className="text-gray-500 mb-8 font-medium">Please enter your email to start learning</p>
+          <form onSubmit={(e) => {
+            e.preventDefault();
+            const formData = new FormData(e.currentTarget);
+            const email = formData.get('email') as string;
+            if (email && email.includes('@')) setUserEmail(email);
+          }}>
+            <input 
+              name="email"
+              type="email" 
+              required
+              placeholder="student@example.com"
+              className="w-full p-4 bg-gray-50 border border-gray-200 rounded-xl outline-none focus:border-[#764ba2] focus:ring-2 focus:ring-[#764ba2]/20 transition-all mb-6 text-lg"
+            />
+            <button 
+              type="submit"
+              className="w-full py-4 bg-gradient-to-r from-[#667eea] to-[#764ba2] text-white rounded-xl font-bold text-lg hover:opacity-90 shadow-lg shadow-purple-500/30 transition-all"
+            >
+              Start Session 🚀
+            </button>
+          </form>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="flex h-screen bg-[#f8f9fa] overflow-hidden relative">

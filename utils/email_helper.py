@@ -3,7 +3,7 @@ from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
 from utils.config import Config
 
-def send_feedback_email(subject, body):
+def send_feedback_email(subject, body, to_email=None):
     """
     Sends an email using Gmail SMTP.
     Requires a Gmail App Password.
@@ -14,7 +14,7 @@ def send_feedback_email(subject, body):
     try:
         msg = MIMEMultipart()
         msg['From'] = Config.SENDER_EMAIL
-        msg['To'] = Config.RECIPIENT_EMAIL or Config.SENDER_EMAIL
+        msg['To'] = to_email or Config.RECIPIENT_EMAIL or Config.SENDER_EMAIL
         msg['Subject'] = subject
 
         msg.attach(MIMEText(body, 'html'))

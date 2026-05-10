@@ -87,9 +87,11 @@ class EmailQuizRequest(BaseModel):
     session_id: str = Field(..., min_length=1)
     score: int = Field(..., ge=0, le=100)
     total: int = Field(..., ge=1, le=100)
+    user_email: str = Field(..., min_length=5)
 
 class EmailStatsRequest(BaseModel):
     session_id: str
+    user_email: str = Field(..., min_length=5)
 
 @app.get("/")
 def read_root():
@@ -175,9 +177,10 @@ async def ocr(file: UploadFile = File(...), _key: str = Depends(verify_api_key))
 async def email_quiz(req: EmailQuizRequest, _key: str = Depends(verify_api_key)):
     timestamp = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
     percentage = (req.score / req.total) * 100
-    body = get_quiz_report_html("Student", req.score, req.total, percentage)
+    student_name = req.user_email.split('@')[0].capitalize()
+    body = get_quiz_report_html(student_name, req.score, req.total, percentage)
     
-    success, msg = send_feedback_email(f"Interactive Quiz Results [{timestamp}]", body)
+    success, msg = send_feedback_email(f"Interactive Quiz Results [{timestamp}]", body, to_email=req.user_email)
     if not success:
         print(f"Email Error: {msg}")
         raise HTTPException(status_code=500, detail="Failed to send email.")
@@ -202,9 +205,10 @@ async def email_stats(req: EmailStatsRequest, _key: str = Depends(verify_api_key
     avg_confidence = 0.85 # Mocking confidence aggregation for now
     
     timestamp = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-    body = get_premium_report_html("Student", duration, total_queries, avg_confidence, dict(counts))
+    student_name = req.user_email.split('@')[0].capitalize()
+    body = get_premium_report_html(student_name, duration, total_queries, avg_confidence, dict(counts))
     
-    success, msg = send_feedback_email(f"Learning Session Summary [{timestamp}]", body)
+    success, msg = send_feedback_email(f"Learning Session Summary [{timestamp}]", body, to_email=req.user_email)
     if not success:
         print(f"Email Error: {msg}")
         raise HTTPException(status_code=500, detail="Failed to send email.")
