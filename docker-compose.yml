@@ -12,6 +12,7 @@ services:
       context: .
       dockerfile: Dockerfile.backend
     container_name: lang-api-backend
+    user: "root"
     restart: unless-stopped
     env_file: .env
     environment:
@@ -43,6 +44,9 @@ services:
     build:
       context: .
       dockerfile: Dockerfile.frontend
+      args:
+        - NEXT_PUBLIC_API_URL=
+        - NEXT_PUBLIC_API_KEY=${API_SECRET_KEY}
     container_name: lang-frontend-ui
     restart: unless-stopped
     environment: []
@@ -80,11 +84,11 @@ services:
         reservations:
           cpus: "0.5"
           memory: 1G
-    healthcheck:
-      test: ["CMD", "curl", "-f", "http://localhost:8000/api/v1/heartbeat"]
-      interval: 30s
-      timeout: 10s
-      retries: 3
+    # healthcheck:
+    #   test: ["CMD", "curl", "-f", "http://localhost:8000/api/v1/heartbeat"]
+    #   interval: 30s
+    #   timeout: 10s
+    #   retries: 3
     labels:
       - "com.lang-agent.service=chroma-db"
       - "com.lang-agent.tier=database"

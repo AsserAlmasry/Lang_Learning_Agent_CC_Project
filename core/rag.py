@@ -5,6 +5,8 @@ from langchain_community.vectorstores import Chroma
 from langchain_core.documents import Document
 from utils.config import Config
 
+_GLOBAL_VECTOR_DB = None
+
 class RAGEngine:
     def __init__(self, persist_directory=None):
         self.persist_directory = persist_directory or Config.CHROMA_DB_PATH
@@ -16,16 +18,13 @@ class RAGEngine:
         self._initialize_db()
 
     def _initialize_db(self):
-        if os.path.exists(self.persist_directory) and os.listdir(self.persist_directory):
-            self.vector_db = Chroma(
+        global _GLOBAL_VECTOR_DB
+        if _GLOBAL_VECTOR_DB is None:
+            _GLOBAL_VECTOR_DB = Chroma(
                 persist_directory=self.persist_directory,
                 embedding_function=self.embeddings
             )
-        else:
-            self.vector_db = Chroma(
-                persist_directory=self.persist_directory,
-                embedding_function=self.embeddings
-            )
+        self.vector_db = _GLOBAL_VECTOR_DB
 
     def ingest_json_data(self, file_path, category):
         """Ingests data from a JSON file into the vector database."""
