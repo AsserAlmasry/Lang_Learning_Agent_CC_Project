@@ -108,7 +108,7 @@ function Deploy-Huawei {
     
     Write-Host "[1/2] Building production images..." -ForegroundColor Cyan
     # Pass the Public IP or Custom URL so the Frontend knows where the Backend is
-    $API_URL = if ($CustomApiUrl) { $CustomApiUrl } else { "https://lang-agent-asser.duckdns.org/api" }
+    $API_URL = if ($CustomApiUrl) { $CustomApiUrl } else { "https://lang-agent-asser.duckdns.org" }
     Write-Host "Targeting API: $API_URL" -ForegroundColor Yellow
 
     $API_KEY = (Select-String -Path ".env" -Pattern "API_SECRET_KEY=(.+)" | ForEach-Object { $_.Matches.Groups[1].Value })
